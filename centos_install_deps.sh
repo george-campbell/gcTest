@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo su -
+
 sed -i 's/requiretty/!requiretty/g' /etc/sudoers
 
 echo "Configure docker device marrer"
