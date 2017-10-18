@@ -9,7 +9,7 @@ yum install http://download.zfsonlinux.org/epel/zfs-release.el7.noarch.rpm -y
 yum install zfs zfs-dracut -y
 modprobe zfs
 
-ZDISK=$( parted -m /dev/sda print all 2>/dev/null | grep unknown | grep /dev/sd | head -1 | cut -d':' -f1 )
+ZDISK=$( parted -m /dev/sdc print all 2>/dev/null | grep unknown | grep /dev/sd | head -1 | cut -d':' -f1 )
 zpool create -f zpool-pg $ZDISK
 mkdir -p /var/lib/pgsql/data
 zfs create -o mountpoint=/var/lib/pgsql/data zpool-pg/data
