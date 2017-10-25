@@ -7,16 +7,4 @@ DOCKERVG=$( parted -m /dev/sdc print all 2>/dev/null | grep /dev/sd | head -1 | 
 echo "DEVS=${DOCKERVG}" > /etc/sysconfig/docker-storage-setup
 echo "VG=docker-vg" >> /etc/sysconfig/docker-storage-setup
 
-container-storage-setup
-if [ $? -eq 0 ]
-then
-   echo "Docker thin pool logical volume created successfully"
-else
-   echo "Error creating logical volume for Docker"
-   exit 3
-fi
-
-systemctl enable docker
-systemctl start docker
-
 echo "Installation finished"
